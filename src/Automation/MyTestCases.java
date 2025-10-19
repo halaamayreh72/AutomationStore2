@@ -106,7 +106,17 @@ public class MyTestCases extends MyData
 		
 	}
 
-    
+    @Test(priority=2)
+    public void Logout() throws InterruptedException
+    { 
+    	
+    	Thread.sleep(2000);
+    	WebElement TheLogout = driver.findElement(By.linkText("Logoff"));
+    	TheLogout.click();
+    	
+    	Boolean ActualValueForLogout = driver.getPageSource().contains(TheLogoutMsg);
+    	Assert.assertEquals(ActualValueForLogout, true);
+    }
 
     @AfterTest
     public void AfterMyTest() 

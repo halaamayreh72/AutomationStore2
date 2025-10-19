@@ -31,7 +31,7 @@ public class MyData
 	int TheSelectIndex = rand.nextInt(1,10);
 	
 	 String ExpectedTextForSignUp = "YOUR ACCOUNT HAS BEEN CREATED!";
-
+     String TheLogoutMsg = "You have been logged off your account. It is now safe to leave the computer.";
 	 
       
 
