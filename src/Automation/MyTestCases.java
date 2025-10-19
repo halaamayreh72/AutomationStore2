@@ -149,10 +149,32 @@ public class MyTestCases extends MyData
         
         List <WebElement> AllItems = driver.findElements(By.className("prdocutname"));
         int RandomItemAdd = rand.nextInt(AllItems.size());
-        
+
         AllItems.get(RandomItemAdd).click();
         
-    	
+        
+      //  if (driver.getCurrentUrl().contains("product_id=116"))
+      //  {
+      // 	WebElement AvailableOption = driver.findElement(By.id("option344747"));
+     // 	AvailableOption.click();
+     // }
+        
+        
+        while (driver.getPageSource().contains("Out of Stock") || driver.getCurrentUrl().contains("product_id=116"))
+        
+        {
+        	driver.navigate().back();
+            List <WebElement> AlternativeItems = driver.findElements(By.className("prdocutname"));
+            int AlternativeItem = rand.nextInt(AllItems.size());
+
+            AlternativeItems.get(AlternativeItem);
+
+        	
+        }
+        
+        
+    	WebElement AddButton = driver.findElement(By.cssSelector(".cart"));
+    	AddButton.click();
     }
     
     @AfterTest
