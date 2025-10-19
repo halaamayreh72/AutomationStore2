@@ -41,7 +41,7 @@ public class MyTestCases extends MyData
 	
 	
 	
-	@Test (priority=1)
+	@Test (priority=1 , enabled = false)
 	public void SignUp() throws InterruptedException
 	
 	{
@@ -106,7 +106,7 @@ public class MyTestCases extends MyData
 		
 	}
 
-    @Test(priority=2)
+    @Test(priority=2 , enabled = false)
     public void Logout() throws InterruptedException
     { 
     	
@@ -118,6 +118,43 @@ public class MyTestCases extends MyData
     	Assert.assertEquals(ActualValueForLogout, true);
     }
 
+    @Test(priority=3,enabled = false)
+    public void Login() 
+    
+    {
+    	
+    	WebElement Login = driver.findElement(By.linkText("Login or register"));
+    	Login.click();
+    	
+    	WebElement LoginNameInupt = driver.findElement(By.cssSelector("#loginFrm_loginname"));
+    	
+    	LoginNameInupt.sendKeys(TheFirstName);
+    	
+  	WebElement Loginpassword = driver.findElement(By.cssSelector("#loginFrm_password"));
+  	WebElement TheLogin = driver.findElement(By.cssSelector("button[title='Login']"));
+
+    	LoginNameInupt.sendKeys(LOGINNAME);
+    	Loginpassword.sendKeys(Password);
+    	TheLogin.click();
+    	
+    	
+    }
+    
+    
+    @Test (priority=3)
+    public void Additems() 
+    
+    {
+        driver.navigate().to("https://automationteststore.com/");
+        
+        List <WebElement> AllItems = driver.findElements(By.className("prdocutname"));
+        int RandomItemAdd = rand.nextInt(AllItems.size());
+        
+        AllItems.get(RandomItemAdd).click();
+        
+    	
+    }
+    
     @AfterTest
     public void AfterMyTest() 
     {
