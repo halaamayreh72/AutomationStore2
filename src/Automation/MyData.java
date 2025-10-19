@@ -1,38 +1,57 @@
 package Automation;
-
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.time.Duration;
 import java.util.Random;
 
-public class MyData
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.edge.EdgeDriver;
+import org.testng.annotations.BeforeTest;
+import org.testng.annotations.Test;
 
-{
-	 boolean WantToSubscribe ;
+public class MyData {
 
-	Random rand = new Random();
+	WebDriver driver = new EdgeDriver();
 	
-	String [] firstNames = {"Shatha" , "zainab" , "ayham" , "abdulrahman","ammar" , "sana"};
-	String [] lastNames = {"mohammad","Mahmoud","ali","omar","noor","rami"};
-	String domain = "@gmail.com";
-	int randomNumberForTheEmail = rand.nextInt(9583);
-	int randomFirstNameIndex = rand.nextInt(firstNames.length);
-	int randomLastNameIndex = rand.nextInt(lastNames.length);
+	// global variables to be used later 
+
+	String myWebSite = "https://automationteststore.com/";
+
+	String SignupPage = "https://automationteststore.com/index.php?rt=account/create";
+
+	Connection con;
+
+	Statement stmt;
+
+	ResultSet rs;
+	Random rand = new Random(); 
+
+	int randomNumberForTheEmail1 = rand.nextInt(54789);
+	int randomNumberForTheEmail2 = rand.nextInt(5472);
+	int randomNumberForTheEmail3 = rand.nextInt(1600);
+
+	String ExpectedTextForTheSignUp = "YOUR ACCOUNT HAS BEEN CREATED!" ;
 	
-	String TheFirstName = firstNames[randomFirstNameIndex];
-	String TheLastNames = lastNames[randomLastNameIndex];
-	String TheEmail= TheFirstName+TheLastNames+randomNumberForTheEmail+domain;
+	int randomNumberForTheEmail = randomNumberForTheEmail1*randomNumberForTheEmail2 -randomNumberForTheEmail3 ; 
+
 	
-	String telephoneNumber = "0792682544";
-	String theFax = "232445";
-	String theAdressOne = "Amman-Jordan";
+	// the data inside mydata base 
+
+	String CustomerFirstNameInDataBase;
+	String CustomerLastNameInDataBase;
+	String email;
+	String password = "123!@#P@ssw0rd";
+	String CustomerCountryInDataBase;
 	
-	String LOGINNAME = TheFirstName+TheLastNames+randomNumberForTheEmail;
-	String PostalCode = "374327";
-	String Password = "P@$$word";
+	String address ; 
+
+	String ThePostalcode ; 
 	
-	int TheSelectIndex = rand.nextInt(1,10);
+	String loginName ; 
 	
-	 String ExpectedTextForSignUp = "YOUR ACCOUNT HAS BEEN CREATED!";
-     String TheLogoutMsg = "You have been logged off your account. It is now safe to leave the computer.";
-	 
-      
 
 }
